@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v2';
-const dynamicCacheName = 'site-dynamic-v1';
+const staticCacheName = 'site-static';
+const dynamicCacheName = 'site-dynamic';
 const assets = [
     '/',
     '/index.html',
@@ -11,6 +11,7 @@ const assets = [
     '/img/dish.png',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
+    '/pages/fallback.html'
 ];
 
 // install service worke
@@ -31,7 +32,7 @@ self.addEventListener('activate', evt => {
         caches.keys().then(keys => {
             //console.log(keys);
             return Promise.all(keys
-                .filter(key => key !== staticCacheName)
+                .filter(key => key !== staticCacheName && key !== dynamicCacheName)
                 .map(key => caches.delete(key))
             );
         })
@@ -49,6 +50,10 @@ self.addEventListener('fetch', evt => {
                     return fetchRes;
                 })
             });
+        }).catch(() => {
+            if (evt.request.url.indexOf('.html') > -1) {
+                return caches.match('/pages/fallback.html');
+            }
         })
     );
 });
