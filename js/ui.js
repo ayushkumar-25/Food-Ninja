@@ -20,9 +20,11 @@ const renderRecipe = (data, id) => {
       <div class="recipe-ingredients">${data.ingredients}</div>
     </div>
     <div class="recipe-delete">
-      <i class="material-icons" data-id="${id}">delete_outline</i>
+      <a href="">
+        <i class="material-icons" data-id="${id}">delete_outline</i>
+      </a>
     </div>
-  </div
+  </div>
   `;
   recipes.innerHTML += html;
 
