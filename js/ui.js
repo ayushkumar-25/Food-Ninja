@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   M.Sidenav.init(forms, { edge: 'left' });
 });
 
-// render recipe dat
+// render recipe data (add new recipe)
 const renderRecipe = (data, id) => {
 
   const html = `
@@ -27,3 +27,9 @@ const renderRecipe = (data, id) => {
   recipes.innerHTML += html;
 
 };
+
+// remove recipe from DOM
+const removeRecipe = (id) => {
+  const recipe = document.querySelector(`.recipe[data-id=${id}]`);
+  recipe.remove();
+}
