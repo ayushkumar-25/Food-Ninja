@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
   <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
   <meta name="theme-color" content="#FFE1C4">
 </head>
+
 <body class="grey lighten-4">
 
   <!-- top nav -->
@@ -32,9 +34,11 @@
     <li><a class="subheader">FOODNINJA</a></li>
     <li><a href="/" class="waves-effect">Home</a></li>
     <li><a href="/pages/about.html" class="waves-effect">About</a></li>
-    <li><div class="divider"></div></li>
+    <li>
+      <div class="divider"></div>
+    </li>
     <li><a href="/pages/contact.html" class="waves-effect">
-      <i class="material-icons">mail_outline</i>Contact</a>
+        <i class="material-icons">mail_outline</i>Contact</a>
     </li>
   </ul>
 
@@ -91,7 +95,7 @@
   <!-- add recipe side nav -->
   <div id="side-form" class="sidenav side-form">
     <form class="add-recipe container section">
-      <h6 >New Recipe</h6>
+      <h6>New Recipe</h6>
       <div class="divider"></div>
       <div class="input-field">
         <input placeholder="e.g. Ninja soup" id="title" type="text" class="validate">
@@ -107,7 +111,28 @@
     </form>
   </div>
 
+  <!-- working with old library of firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+
+      apiKey: "AIzaSyCnzFzSAe12vYShTYoMhJJWvgcuL3KX3sU",
+      authDomain: "food-ninja-2021.firebaseapp.com",
+      projectId: "food-ninja-2021",
+      storageBucket: "food-ninja-2021.appspot.com",
+      messagingSenderId: "1094816236336",
+      appId: "1:1094816236336:web:6a0c3e95045eeea28dfef5",
+      measurementId: "G-HZV30K5QQR"
+    };
+    firebase.initializeApp(config);
+    const db = firebase.firestore();
+  </script>
+
   <script src="/js/app.js"></script>
+  <script src="/js/db.js"></script>
   <script src="/js/ui.js"></script>
 </body>
+
 </html>
