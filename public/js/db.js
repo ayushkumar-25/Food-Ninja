@@ -11,7 +11,7 @@ db.enablePersistence()
     });
 
 // real-time listener
-db.collection('recipes').onSnapshot((snapshot) => {
+db.collection('recipes').orderBy("title", "asc").onSnapshot((snapshot) => {
     // console.log(snapshot.docChanges());
     snapshot.docChanges().forEach(change => {
         // console.log(change, change.doc.data(), change.doc.id);
